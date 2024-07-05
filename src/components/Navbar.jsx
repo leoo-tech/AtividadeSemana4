@@ -1,4 +1,4 @@
-import './Navbar.css'
+import './styles/Navbar.css';
 import Button from './Button'; // Corrigido para importar o arquivo Button corretamente
 
 function Navbar() {
