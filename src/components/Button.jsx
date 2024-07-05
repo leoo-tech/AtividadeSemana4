@@ -1,4 +1,4 @@
-import './Button.css'
+import './styles/Button.css'
 function Button() {
   function handleClick() {
     alert('Bem vindo(a)! Aqui você irá acessar seu processo de adoção.');
