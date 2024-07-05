@@ -7,6 +7,7 @@ function Navbar(props) {
         
 
         <header className='navbar'>
+             {props.logado && <img width="25" src="https://www.theventuretours.com/wp-content/uploads/2020/03/avatar-icon-png-1-1024x1024.png"/>}
             <div className="logo-container">
                 <img src="/logo-gatopoles.png" alt="Logo da Gatopoles" className="logo" />
             </div>

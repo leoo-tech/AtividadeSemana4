@@ -25,6 +25,7 @@
 }
 
 .nav-links a {
+    font-size: 2rem;
     text-decoration: none;
     color: #ffff;
 }
@@ -36,5 +37,5 @@
 }
 
 .logo {
-    width: 150px;
+    width: 180px;
 }
