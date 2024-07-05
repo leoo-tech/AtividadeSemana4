@@ -1,9 +1,12 @@
 import './styles/Navbar.css';
 import Button from './Button'; // Corrigido para importar o arquivo Button corretamente
 
-function Navbar() {
+function Navbar(props) {
+
     return (
-        <nav className='navbar'>
+        
+
+        <header className='navbar'>
             <div className="logo-container">
                 <img src="/logo-gatopoles.png" alt="Logo da Gatopoles" className="logo" />
             </div>
@@ -15,7 +18,7 @@ function Navbar() {
             <div className="login-container">
                 <Button />
             </div>
-        </nav>
+        </header>
     );
 }
 export default Navbar;
