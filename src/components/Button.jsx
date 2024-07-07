@@ -1,12 +1,14 @@
-import './styles/Button.css'
-function Button() {
-  function handleClick() {
-    alert('Bem vindo(a)! Aqui você irá acessar seu processo de adoção.');
-  }
+import './styles/Button.css';
+
+/* 3. Simplificação do Componente Button:
+
+O componente Button pode ser simplificado, já que a lógica de login/logout agora está no App */
+
+function Button({ text, onClick }) {
 
   return (
-    <button className="button" onClick={handleClick}>
-      Entrar
+    <button className="button" onClick={onClick}>
+      {text}
     </button>
   );
 }
