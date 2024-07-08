@@ -1,24 +1,27 @@
-import Cards from './Cards';
+import Card from './Card';
 import './styles/Galeria.css';
 
+
 const gatosAdocao = [
-    {cod: 1, nome: "Alex", genero: "macho", corOlhos: "Verdes", cor: "Tigrado e branco", tipoPelagem: "Pelagem Curta"},
-    {cod: 2, nome: "Líder", genero: "macho", corOlhos: "Verdes", cor: "Tigrado e branco", tipoPelagem: "Pelagem Curta"},
-    {cod: 3, nome: "Cuscuz", genero: "macho", corOlhos: "Verdes", cor: "Branco", tipoPelagem: "Pelagem Longa"},
+    { cod: 1, nome: "Alex", genero: "macho", corOlhos: "Verdes", cor: "Branco", tipoPelagem: "Pelagem Curta", foto: "gatoalex.jpg" },
+    { cod: 2, nome: "Líder", genero: "macho", corOlhos: "Verdes", cor: "Tigrado e branco", tipoPelagem: "Pelagem Curta", foto: "gatolider.jpg" },
+    { cod: 3, nome: "Cuscuz", genero: "macho", corOlhos: "Verdes", cor: "Branco", tipoPelagem: "Pelagem Longa", foto: "gatocuscuz.jpg" },
 ]
 
 
 function Galeria() {
 
-    const cardsGatos = gatosAdocao.map((gatos) => {
+    const cardsGatos = gatosAdocao.map((gato) => {
         return (
-            <article> {/*adicionar um componente*/}
-                <h3>{gatos.nome}</h3>
-                <p>Genero: {gatos.genero}</p>
-                <p>Cor dos olhos: {gatos.corOlhos}</p>
-                <p>Cor: {gatos.cor}</p>
-                <p>Tipo de pelagem: {gatos.tipoPelagem}</p>
-            </article>
+            <Card
+                key={gato.cod}
+                nome={gato.nome}
+                foto={gato.foto}
+                genero={gato.genero}
+                corOlhos={gato.corOlhos}
+                cor={gato.cor}
+                tipoPelagem={gato.tipoPelagem}
+            />
         );
     });
 
