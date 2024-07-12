@@ -1,46 +1,37 @@
-import React, { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Banner from "./components/Banner";
-import Galeria from "./components/Galeria";
 import Footer from "./components/Footer";
-import './App.css';
+import Inicio from "./pages/Inicio";
+import Sobre from "./pages/Sobre";
+import Apadrinhe from "./pages/Apadrinhe";
+import Adote from "./pages/Adote";
+import Login from "./pages/Login";
+import Cadastro from "./pages/Cadastro";
+import Contato from "./pages/Contato";
+import Privacidade from "./pages/Privacidade";
+import NotFound from "./pages/NotFound";
 
-/* 1. Estado de Login no Componente Principal (App.jsx):
-
-Em vez de gerenciar o estado de login no Navbar, vamos centralizar essa informação no componente pai (App.jsx). Isso facilita o compartilhamento do estado entre diferentes componentes, caso necessário. */
-
-
-function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [nomeUser, setNomeUser] = useState(''); // Estado para o nome do usuário
-
-  const handleLogin = (nome) => {
-    if (nome.trim() !== ''){
-    setIsLoggedIn(true);
-    setNomeUser(nome); // Define o nome do usuário ao fazer login
-    alert(`Bem vindo(a), ${nome}! Aqui você irá acessar seu processo de adoção`);
-  } else {
-    alert('Por favor, digite seu nome para entrar');
-  }
-};
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setNomeUser(''); // Limpa o nome do usuário ao fazer logout
-    alert("Você saiu da sua conta");
-  };
-
+export default function App() {
   return (
-    <>
-      <Navbar isLoggedIn={isLoggedIn} nomeUser={nomeUser} handleLogin={handleLogin} handleLogout={handleLogout} />
-      <Banner />
-      <Galeria />
-      <Footer />
-    </>
-  )
+    <main className="conteudo">
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Inicio />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/apadrinhe" element={<Apadrinhe />} />
+          <Route path="/adote" element={<Adote />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/contato" element={<Contato />} />
+          <Route path="/privacidade" element={<Privacidade />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </main>
+  );
 }
-
-export default App
 
 /* Funcionamento:
 

@@ -7,16 +7,19 @@
     transition: 0.5s;
 }
 
-.card h3 {
+.card-titulo {
     font-size: 1.5rem;
     color: #A6CE39;
 }
 
-.card img {
+.card-img {
     /* recorte quadrado */
     width: 100%;
-    height: 300px;
+    /* Faz a imagem ocupar toda a largura do cartão */
+    height: 200px;
+    /* Altura fixa para todas as imagens */
     object-fit: cover;
+    /* Garante que a imagem cubra o espaço disponível sem perder suas proporções */
     border-radius: 1rem;
 }
 

@@ -1,60 +1,43 @@
-import React, { useState } from 'react';
-import './styles/Navbar.css';
-import Button from './Button'; // Corrigido para importar o arquivo Button corretamente
+import { Link } from "react-router-dom";
+import { Container, Navbar, Nav } from "react-bootstrap";
+import { useState } from "react";
 
-/* 2. Atualização do Componente Navbar:
+export default function Menu() {
+  const [expanded, setExpanded] = useState(false);
 
-Agora, o Navbar receberá as props isLoggedIn, nomeUser, handleLogin e handleLogout do componente App. */
+  const navLinks = [
+    { to: "/", text: "Inicio" },
+    { to: "/login", text: "Login" },
+    { to: "/cadastro", text: "Cadastro" },
+    { to: "/apadrinhe", text: "Apadrinhe" },
+    { to: "/adote", text: "Adote" },
+    { to: "/contato", text: "Contato" },
+    { to: "/sobre", text: "Sobre" },
+  ];
 
-function Navbar({ isLoggedIn, nomeUser, handleLogin, handleLogout }) {
-    const [inputNome, setInputNome] = useState(''); // Estado para o input de nome
-
-    return (
-
-        <header className='navbar'>
-            <div className="logo-container">
-                <img src="/logo-gatopoles.png" alt="Logo da Gatopoles" className="logo" />
-            </div>
-
-            <h3>
-                {isLoggedIn &&
-                    `Olá, ${nomeUser}!`
-                }
-            </h3>
-
-            <ul className="nav-links">
-                <li><a href="#">Sobre</a></li>
-                <li><a href="#">Apadrinhe</a></li>
-                <li><a href="#"><strong>Adote</strong></a></li>
-                {isLoggedIn && <li><a href="#">Perfil</a></li>}
-            </ul>
-
-            <div className="login-container">
-                {!isLoggedIn && ( // Exibe o input apenas se não estiver logado
-                    <input
-                        type="text"
-                        placeholder="Digite seu nome"
-                        value={inputNome}
-                        onChange={(e) => setInputNome(e.target.value)}
-                        className='input-nome'
-                    />
-                )}
-                <Button
-                    text={isLoggedIn ? "Sair" : "Entrar"}
-                    onClick={isLoggedIn ? handleLogout : () => handleLogin(inputNome)} // Passa o nome ao fazer login
-                />
-            </div>
-        </header>
-    );
+  return (
+    <header>
+      <Navbar bg="dark" variant="dark" expand="md" expanded={expanded}>
+        <Container fluid>
+          <Link to="/" onClick={() => setExpanded(false)}>
+            <img
+              src="logo-gatopoles.png"
+              width="120"
+              alt="Logo"
+            />
+          </Link>
+          <Navbar.Toggle onClick={() => setExpanded(expanded ? false : true)} />
+          <Navbar.Collapse className="justify-content-end">
+            <Nav className="ms-auto">
+              {navLinks.map((link, index) => (
+                <Nav.Link as={Link} to={link.to} key={index} onClick={() => setExpanded(false)}>
+                  {link.text}
+                </Nav.Link>
+              ))}
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    </header>
+  );
 }
-export default Navbar;
-
-/* O usuário digita algo no input.
-O evento onChange é disparado.
-A função de seta é executada, recebendo o evento (e).
-A função obtém o novo valor do input (e.target.value).
-A função setInputNome é chamada para atualizar o estado inputNome com o novo valor.
-O componente React é re-renderizado, exibindo o novo valor no input.
-Exemplo:
-
-Se o usuário digitar "Maria" no input, o evento onChange será acionado. A função de seta obterá o valor "Maria" e o passará para setInputNome, que atualizará o estado inputNome para "Maria". O input então exibirá o texto "Maria". */

@@ -1,23 +1,31 @@
 .banner-container {
     display: flex;
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    height: 60vh;  
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
     width: 100%;
-    overflow: hidden;  
-    text-align: center; 
+    overflow: hidden;
+    text-align: center;
 }
 
 .imagem-banner {
-    width: 100%;   
-    height: auto;  
+    max-height: 400px;
+    /* Altura máxima para telas grandes */
+}
+
+@media (max-width: 768px) {
+    .imagem-banner {
+        max-height: 200px;
+        /* Altura ajustada para telas menores */
+    }
 }
 
 .banner-text {
-    margin-top: 20px; 
-    font-size: 2rem; 
-    color: #ffffff; 
-    background-color: #A6CE39;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #ffffff;
+    background-color: #8abb05;
     padding: 15px;
 }
