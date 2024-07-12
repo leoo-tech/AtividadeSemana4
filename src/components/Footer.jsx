@@ -23,6 +23,7 @@
 
 import React from "react";
 import { Container, Row, Col, Nav, Image } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./styles/Footer.css";
 
 function Footer() {
@@ -62,6 +63,16 @@ function Footer() {
             <p className="copyRight">
               Copyright © 2019 - GATÓPOLES - TODOS OS DIREITOS RESERVADOS
             </p>
+          </Col>
+        </Row>
+
+        {/* Adicione Link to pagina de politica de privacidade */}
+
+        <Row className="justify-content-center text-center">
+          <Col xs={12}>
+            <Nav.Link as={Link} to="/Privacidade">
+              Política de Privacidade
+            </Nav.Link>
           </Col>
         </Row>
       </Container>

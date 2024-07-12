@@ -118,6 +118,18 @@ export default function Gatopoles() {
             Apadrinhe
           </Alert.Link>
         </Alert>
+
+        <Alert variant="light" className="mt-5">
+          <Alert.Heading>Doações</Alert.Heading>
+          <p>
+            Se você quer contribuir com doações, entre em contato conosco e
+            saiba como proceder.
+          </p>
+          <p>Pagina Not Found aqui</p>
+          <Alert.Link as={Link} to="/doe">
+            Doe
+          </Alert.Link>
+        </Alert>
       </Container>
     </main>
   );

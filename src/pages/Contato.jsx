@@ -18,6 +18,20 @@ function Contato() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    // Verifica se todos os campos estão preenchidos
+    if (!subject || !name || !email || !message) {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    // Verifica o formato do e-mail
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Por favor, insira um endereço de e-mail válido.");
+      return;
+    }
+
     // Aqui você pode adicionar a lógica para enviar os dados do formulário
     console.log(subject, name, email, message);
   }

@@ -3,7 +3,7 @@ import { Accordion, Container } from "react-bootstrap";
 
 export default function Privacidade() {
   return (
-    <main>
+    <main className="mb-5 mt-5 py-5">
       <Container>
         <h1>Política de Privacidade</h1>
         <Accordion alwaysOpen>

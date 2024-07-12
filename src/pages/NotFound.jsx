@@ -1,5 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Alert } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 export default function NotFound() {
   return (
@@ -17,6 +19,14 @@ export default function NotFound() {
               movida para outro lugar.
             </p>
           </Alert>
+
+          <Alert variant="warning">
+            <p>Estamos em manutenção </p>
+          </Alert>
+
+          <Button className="mt-5 mb-5 px-5" variant="primary" as={Link} to="/">
+            Voltar para a página inicial
+          </Button>
         </Col>
       </Row>
     </Container>

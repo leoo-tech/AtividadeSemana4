@@ -1,6 +1,6 @@
+import React from "react";
 import { Button, Form, Container, Row, Col } from "react-bootstrap";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
 
 function Login() {
   const {
@@ -63,8 +63,8 @@ function Login() {
               className="w-100 mt-3 mb-3"
             >
               Entrar
-            </Button>            
-            
+            </Button>
+
             <Button
               variant="outline-danger"
               type="submit"
