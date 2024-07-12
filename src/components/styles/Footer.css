@@ -1,20 +1,18 @@
 footer {
-    background-color: #A6CE39;
-    padding: 8px;
-    color: white;
+  background-color: #7ba700;
+  margin-top: auto;
+  color: whitesmoke;
 }
 
-.informacoesadicionais {
-  padding: 10px 20px;
+.rodape {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 18px;
 }
 
 .descricao {
   text-align: center;
-  width: 400px;
+  width: 100%;
 }
 
 .copyRight {

@@ -1,70 +1,92 @@
-import { Button } from "react-bootstrap"; // importando o componente Button do react-bootstrap
-import { useForm } from "react-hook-form"; // importando o hook useForm do react-hook-form
+import React from "react";
+import { useForm } from "react-hook-form";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
-export default function Cadastro() {
+function Cadastro() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm(); // desestruturando o objeto retornado pelo hook useForm
+  } = useForm();
 
-  function cadastrar(data) {
-    console.log("Formulário submetido");
+  const onSubmit = (data) => {
     console.log(data);
-  }
+  };
 
   return (
-    <main>
-      <form className="form-section" onSubmit={handleSubmit(cadastrar)}>
-        <h1 className="text-center">Cadastro</h1>
-        <hr />
-        <div>
-          <label htmlFor="nome">Nome</label>
-          <input
-            type="text"
-            id="nome"
-            className="form-control"
-            {...register("nome", { required: true })}
-          />
-          {errors.nome && <small className="invalid">Nome inválido!</small>}
-        </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            className="form-control"
-            {...register("email", { required: true })}
-          />
-          {errors.email && <small className="invalid">email inválido</small>}
-        </div>
-        <div>
-          <label htmlFor="senha">Senha</label>
-          <input
-            type="password"
-            id="senha"
-            className="form-control"
-            {...register("senha", { required: true, minLength: 6 })}
-          />
-          {errors.senha && errors.senha.type === "required" && (
-            <small className="invalid">Senha obrigatória!</small>
-          )}
-          {errors.senha && errors.senha.type === "minLength" && (
-            <small className="invalid">
-              A senha deve ter no mínimo 6 caracteres!
-            </small>
-          )}
-        </div>
+    <Container>
+      <Row className="justify-content-md-center mb-5 mt-5 me-auto">
+        <Col xs={12} md={6}>
+          <Form className="form-section" onSubmit={handleSubmit(onSubmit)}>
+            <h1 className="text-center">Cadastro</h1>
+            <hr />
+            <Form.Group controlId="nome">
+              <Form.Label>Nome</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Digite seu nome"
+                {...register("nome", { required: true })}
+                isInvalid={!!errors.nome}
+              />
+              <Form.Control.Feedback type="invalid">
+                Nome inválido!
+              </Form.Control.Feedback>
+            </Form.Group>
 
-        <div className="mt-2">
-          <Button variant="outline-dark" className="mt-1 w-100" type="submit">
-            Cadastrar
-          </Button>
-          <Button variant="outline-danger" className="mt-1 w-100" type="button">
-            Cadastrar com o Google
-          </Button>
-        </div>
-      </form>
-    </main>
+            <Form.Group controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Digite seu email"
+                {...register("email", { required: true })}
+                isInvalid={!!errors.email}
+              />
+              <Form.Control.Feedback type="invalid">
+                Email inválido!
+              </Form.Control.Feedback>
+            </Form.Group>
+
+            <Form.Group controlId="senha">
+              <Form.Label>Senha</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Digite sua senha"
+                {...register("senha", { required: true, minLength: 6 })}
+                isInvalid={!!errors.senha}
+              />
+              {errors.senha && errors.senha.type === "required" && (
+                <Form.Control.Feedback type="invalid">
+                  Senha obrigatória!
+                </Form.Control.Feedback>
+              )}
+              {errors.senha && errors.senha.type === "minLength" && (
+                <Form.Control.Feedback type="invalid">
+                  A senha deve ter no mínimo 6 caracteres!
+                </Form.Control.Feedback>
+              )}
+            </Form.Group>
+
+            <Button variant="outline-success" className="w-100 mt-3 mb-3" type="submit">
+              Cadastrar
+            </Button>
+
+            <Button
+              variant="outline-danger"
+              type="submit"
+              className="w-100 mt-3 mb-3"
+            >
+              Cadastre-se com Google
+            </Button>
+
+
+            {/* Adicione mais campos de formulário aqui conforme necessário */}
+
+
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
+
+export default Cadastro;

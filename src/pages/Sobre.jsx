@@ -1,80 +1,122 @@
-import { Accordion, Alert, Button, Container } from "react-bootstrap";
+import { Accordion, Card, Container, Alert } from "react-bootstrap";
+import { FaCat } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default function Ajuda() {
+export default function Gatopoles() {
   return (
     <main className="mt-4">
-      <Container>
-        <h1>Ajuda</h1>
+      <Container className="my-5 py-5 px-5">
+        <h1>Gatópoles</h1>
         <hr />
         <Accordion alwaysOpen>
           <Accordion.Item eventKey="0">
             <Accordion.Header>
-              Por que Contratar a nossa empresa de Serviços Gerais?
+              <FaCat className="mx-3" /> Nossa Missão
             </Accordion.Header>
             <Accordion.Body>
-              <p>
-                Contratar uma empresa de serviços gerais terceirizados é uma
-                excelente opção para quem deseja terceirizar serviços de
-                limpeza, segurança, portaria, jardinagem, entre outros. Além de
-                contar com profissionais qualificados e treinados, você terá
-                mais tempo para se dedicar ao seu negócio e à sua família.
-              </p>
+              <Card.Text>
+                • Resgatar gatos abandonados e em risco nas ruas de São Paulo;
+                <br />
+                • Preparar os resgatados para adoção responsável, com todos os
+                cuidados veterinários;
+                <br />• Encontrar lares seguros e amorosos para uma vida digna e
+                saudável.
+              </Card.Text>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="1">
             <Accordion.Header>
-              É seguro contratar uma terceirizada?
+              <FaCat className="mx-3" /> Nossa Visão
             </Accordion.Header>
             <Accordion.Body>
-              <p>
-                Sim, é seguro contratar uma empresa de serviços gerais
-                terceirizados. Nossos profissionais são devidamente treinados e
-                qualificados para realizar os serviços com eficiência e
-                segurança. Além disso, contamos com seguro de responsabilidade
-                civil para garantir a segurança dos nossos clientes e
-                colaboradores.
-              </p>
+              <Card.Text>
+                • Ser uma ONG reconhecida pelo tratamento digno aos gatos;
+                <br />• Contribuir para um mundo com menos abandono e maus
+                tratos.
+              </Card.Text>
             </Accordion.Body>
           </Accordion.Item>
           <Accordion.Item eventKey="2">
-            <Accordion.Header>Quem são nossos clientes?</Accordion.Header>
+            <Accordion.Header>
+              <FaCat className="mx-3" /> Nossos Valores
+            </Accordion.Header>
             <Accordion.Body>
-              <p>
-                Atendemos empresas de diversos segmentos, como indústrias,
-                comércios, condomínios, escolas, hospitais, entre outros. Nossos
-                clientes confiam em nossos serviços e nos recomendam para outras
-                empresas. Entre em contato conosco e solicite um orçamento sem
-                compromisso.
-              </p>
-            </Accordion.Body>
-          </Accordion.Item>
-          <Accordion.Item eventKey="3">
-            <Accordion.Header>Onde posso contatá-los?</Accordion.Header>
-            <Accordion.Body>
-              <p>
-                Você pode entrar em contato conosco através do formulário de
-                contato do nosso site, por e-mail, telefone ou pessoalmente em
-                nossa sede. Estamos à disposição para esclare
-              </p>
+              <Card.Text>
+                • Transparência, responsabilidade e respeito;
+                <br />
+                • Amor e carinho aos animais;
+                <br />• Repúdio à violência e crueldade.
+              </Card.Text>
             </Accordion.Body>
           </Accordion.Item>
         </Accordion>
-        <section className="botoes ms-auto">
-          <Button className="mt-1 me-1" variant="dark" as={Link} to="/">
-            Inicio
-          </Button>
-          <Button
-            className="mt-1 me-1"
-            variant="outline-dark"
-            as={Link}
-            to="/contato"
-          >
-            Entre em contato
-          </Button>
-        </section>
-        <Alert className="mt-1 me-1 pt-10" variant="warning">
-          Estamos em manutenção
+
+        <Alert variant="info" className="mt-5">
+          <Alert.Heading>Quer ajudar?</Alert.Heading>
+          <p>
+            Você pode contribuir com doações, apadrinhamento ou adotando um
+            gatinho. Entre em contato conosco!
+          </p>
+        </Alert>
+
+        <Alert variant="success" className="mt-5">
+          <Alert.Heading>Parcerias</Alert.Heading>
+          <p>
+            Se você tem uma empresa e quer ser nosso parceiro, entre em contato
+            conosco!
+          </p>
+          <Alert.Link as={Link} to="/contato">
+            Fale conosco
+          </Alert.Link>
+        </Alert>
+
+        <Alert variant="warning" className="mt-5">
+          <Alert.Heading>Eventos</Alert.Heading>
+          <p>
+            Acompanhe nossas redes sociais para saber sobre eventos, bazares e
+            feiras de adoção.
+          </p>
+        </Alert>
+
+        <Alert variant="danger" className="mt-5">
+          <Alert.Heading>Denúncias</Alert.Heading>
+          <p>
+            Se você presenciar maus tratos ou abandono de animais, denuncie!
+          </p>
+          <Alert.Link as={Link} to="/contato">
+            Fale conosco
+          </Alert.Link>
+        </Alert>
+
+        <Alert variant="secondary" className="mt-5">
+          <Alert.Heading>Voluntariado</Alert.Heading>
+          <p>
+            Se você quer ser voluntário e ajudar na nossa causa, entre em
+            contato conosco!
+          </p>
+          <Alert.Link as={Link} to="/contato">
+            Fale conosco
+          </Alert.Link>
+        </Alert>
+
+        <Alert variant="primary" className="mt-5">
+          <Alert.Heading>Adoção</Alert.Heading>
+          <p>
+            Se você quer adotar um gatinho, entre em contato conosco e saiba
+            como proceder.
+          </p>
+          <Alert.Link as={Link} to="/adote">
+            Adote
+          </Alert.Link>
+
+          <Alert.Heading className="mt-5">Apadrinhamento</Alert.Heading>
+          <p>
+            Se você quer apadrinhar um gatinho, entre em contato conosco e saiba
+            como proceder.
+          </p>
+          <Alert.Link as={Link} to="/apadrinhe">
+            Apadrinhe
+          </Alert.Link>
         </Alert>
       </Container>
     </main>

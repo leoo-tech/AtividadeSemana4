@@ -1,69 +1,81 @@
-import { Button } from "react-bootstrap"; // importando o componente Button do react-bootstrap
-import { useForm } from "react-hook-form"; // importando o hook useForm do react-hook-form
+import { Button, Form, Container, Row, Col } from "react-bootstrap";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 function Login() {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm(); // desestruturando o objeto retornado pelo hook useForm
+  } = useForm();
 
   function entrar(data) {
-    // data é um objeto com os valores dos campos do formulário
-    console.log("Formulário submetido");
-    console.log(data);
+    console.log("Formulário submetido", data);
   }
 
   return (
-    <main>
-      <form className="form-section" onSubmit={handleSubmit(entrar)}>
-        <h1 className="text-center">Login</h1>
-        <hr />
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            className="form-control"
-            {...register("email", {
-              required: "email obrigatorio",
-              pattern: {
-                value: /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+$/,
-                message: "email invalido",
-              },
-            })}
-          />
-          {errors.email && (
-            <small className="invalid">{errors.email.message}</small>
-          )}
-        </div>
+    <Container>
+      <Row className="justify-content-md-center mb-5 mt-5 me-auto">
+        <Col xs={12} md={6}>
+          <Form className="form-section" onSubmit={handleSubmit(entrar)}>
+            <h1 className="text-center">Login</h1>
+            <hr />
+            <Form.Group controlId="email">
+              <Form.Label>Email</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Digite seu email"
+                {...register("email", {
+                  required: "Email obrigatório",
+                  pattern: {
+                    value: /^[a-z0-9.]+@[a-z0-9]+\.[a-z]+$/,
+                    message: "Email inválido",
+                  },
+                })}
+              />
+              {errors.email && (
+                <p className="text-danger">{errors.email.message}</p>
+              )}
+            </Form.Group>
 
-        <div>
-          <label htmlFor="senha">Senha</label>
-          <input
-            type="password"
-            id="senha"
-            className="form-control"
-            {...register("senha", {
-              required: "senha obrigatória",
-              minLength: { value: 6, message: "minimo de 6 caracteres" },
-              maxLength: { value: 20, message: "maximo de 20 caracteres" },
-            })}
-          />
-        </div>
+            <Form.Group controlId="senha">
+              <Form.Label>Senha</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Digite sua senha"
+                {...register("senha", {
+                  required: "Senha obrigatória",
+                  minLength: {
+                    value: 6,
+                    message: "Senha deve ter no mínimo 6 caracteres",
+                  },
+                })}
+              />
+              {errors.senha && (
+                <p className="text-danger">{errors.senha.message}</p>
+              )}
+            </Form.Group>
 
-        {errors.senha && (
-          <small className="invalid">{errors.senha.message}</small>
-        )}
-
-        <Button variant="outline-dark" className="mt-1 w-100" type="submit">
-          Entrar
-        </Button>
-        <Button variant="outline-danger" className="mt-1 w-100" type="button">
-          Entrar com o Google
-        </Button>
-      </form>
-    </main>
+            {/* Adicione mais campos de formulário aqui conforme necessário */}
+            <Button
+              variant="outline-success"
+              type="submit"
+              className="w-100 mt-3 mb-3"
+            >
+              Entrar
+            </Button>            
+            
+            <Button
+              variant="outline-danger"
+              type="submit"
+              className="w-100 mt-3 mb-3"
+            >
+              Entrar com Google
+            </Button>
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   );
 }
 
